@@ -1,64 +1,130 @@
-/* styles.css */
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+}
+
+/* Scoreboard Styles */
+#scoreboard {
+  margin-bottom: 20px;
+}
+
+#scoreboard h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+#score-display {
+  font-size: 36px;
+  font-weight: bold;
+  background-color: #222222;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* MIDI Selector Styles */
+#midi-selector {
+  margin: 20px 0;
+}
+
+#midi-output {
+  padding: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Status Display Styles */
+#status {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #ffcc00;
+}
+
+/* Connect Button Styles */
+#connect-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #1db954;
+  color: #ffffff;
+  transition: background-color 0.3s;
+}
+
+#connect-button:hover {
+  background-color: #1ed760;
+}
+
+/* Game Grid Styles */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, 60px);
+  grid-template-rows: repeat(8, 60px);
+  gap: 10px;
+  justify-content: center;
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+  background-color: #333333; /* Default color */
+  border-radius: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.square.active-web {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  transform: scale(1.05);
+}
+
+/* Additional Controls Styles */
+#controls {
+    margin-top: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .container {
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
-  
-  /* Scoreboard Styles */
-  #scoreboard {
-    margin-bottom: 20px;
-  }
-  
-  #scoreboard h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-    color: #ffffff;
-  }
-  
-  #score-display {
-    font-size: 36px;
-    font-weight: bold;
-    background-color: #222222;
-    padding: 10px 20px;
-    border-radius: 10px;
-    display: inline-block;
-  }
-  
-  /* MIDI Selector Styles */
-  #midi-selector {
-    margin: 20px 0;
-  }
-  
-  #midi-output {
+}
+
+#timer-select {
     padding: 5px;
     font-size: 16px;
-    margin-left: 10px;
+    margin-bottom: 10px;
     border-radius: 5px;
     border: none;
-  }
-  
-  /* Status Display Styles */
-  #status {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #ffcc00;
-  }
-  
-  /* Connect Button Styles */
-  #connect-button {
+    background-color: #444444;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#timer-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px #1db954;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#start-button,
+#reset-button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -67,53 +133,47 @@ body {
     background-color: #1db954;
     color: #ffffff;
     transition: background-color 0.3s;
-  }
-  
-  #connect-button:hover {
+}
+
+#start-button:hover,
+#reset-button:hover {
     background-color: #1ed760;
-  }
-  
-  /* Game Grid Styles */
+}
+
+#start-button:disabled,
+#reset-button:disabled {
+    background-color: #555555;
+    cursor: not-allowed;
+}
+
+#timer-display {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
   .grid {
-    display: grid;
-    grid-template-columns: repeat(8, 60px);
-    grid-template-rows: repeat(8, 60px);
-    gap: 10px;
-    justify-content: center;
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(8, 40px);
+    gap: 8px;
   }
-  
+
   .square {
-    width: 60px;
-    height: 60px;
-    background-color: #333333; /* Default color */
-    border-radius: 10px;
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    width: 40px;
+    height: 40px;
+  }
+
+  #scoreboard h1 {
+    font-size: 36px;
+  }
+
+  #score-display {
+    font-size: 24px;
   }
   
-  .square.active-web {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-    transform: scale(1.05);
+  #timer-display {
+    font-size: 20px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
-    .grid {
-      grid-template-columns: repeat(8, 40px);
-      grid-template-rows: repeat(8, 40px);
-      gap: 8px;
-    }
-  
-    .square {
-      width: 40px;
-      height: 40px;
-    }
-  
-    #scoreboard h1 {
-      font-size: 36px;
-    }
-  
-    #score-display {
-      font-size: 24px;
-    }
-  }
-  
+}
